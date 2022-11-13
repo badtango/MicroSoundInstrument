@@ -1,7 +1,7 @@
 "/Users/williamrailton/Desktop/MicroSoundInstrument/Code/GUI.scd”.loadPaths;
 
 // Above will load up the GUI in the middle of the screen. 
-// I apologise but you will have to change the file paths to the appropriate directories in the following files:
+// I apologise but you will have to change the file paths to the appropriate directories in the following files.
 
 
 // The loadPath half way down the page in the file "Interface.scd”.
