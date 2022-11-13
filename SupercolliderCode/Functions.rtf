@@ -1,0 +1,179 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red191\green0\blue0;\red0\green0\blue191;\red96\green96\blue96;
+}
+\deftab560
+\pard\pardeftab560\ql\qnatural
+
+\f0\fs26 \cf2 // My Functions\cf0 \
+\
+(\
+~myFuncy = (\{ \cf3 arg\cf0  triggy = 0;\
+~myFunc = (\{ \cf3 arg\cf0  myArrayBass = 0, myArrayDiff = [0, 2, 4, 5, 7, 9, 10, 12], myTrans = 0;\
+	myArrayDiff.size.do(\{ \cf3 arg\cf0  i;\
+		myArrayDiff[i] = myArrayDiff[i] + myArrayBass;\
+	\}); \cf2 // end array\cf0 \
+	myArrayDiff - myTrans;\
+\}); \cf2 // end func\cf0 \
+\
+y = triggy; \cf2 // chosen bassnote \cf0 \
+z = [0, 2, 4, 5, 7, 9, 11, 12]; \cf2 // scale\cf0 \
+w = [48, 36, 24, 12, 0]; \cf2 // oct\cf0 \
+x = ~myFunc.value(y, z);\
+\
+~go1 = (\{ \cf3 arg\cf0  myTime = 0;\
+\pard\pardeftab560\ql\qnatural
+\cf3 SystemClock\cf0 .schedAbs( (\cf3 thisThread\cf0 .seconds + myTime),\
+    \{\
+    \cf4 "synth1"\cf0 .postln; \
+    (\
+		a = 40.rand;\
+		~mysynth1task.stop; ~mysynth1.value(a, x, w);\
+	)                    \
+\});\cf2 // end clock\cf0 \
+\});\cf2 // end func\cf0 \
+\
+~go2 = (\{ \cf3 arg\cf0  myTime = 0;\
+\cf3 SystemClock\cf0 .schedAbs( (\cf3 thisThread\cf0 .seconds + myTime),\
+    \{\
+    \cf4 "synth2"\cf0 .postln; \
+    (\
+		b = 40.rand;\
+		~mysynth2task.stop; ~mysynth2.value(b, x, w);\
+	)                    \
+\});\cf2 // end clock\cf0 \
+\});\cf2 // end func\cf0 \
+\
+~go3 = (\{ \cf3 arg\cf0  myTime = 0;\
+\cf3 SystemClock\cf0 .schedAbs( (\cf3 thisThread\cf0 .seconds + myTime),\
+    \{\
+    \cf4 "synth3"\cf0 .postln; \
+    (\
+       c = 40.rand;\
+		~mysynth3task.stop; ~mysynth3.value(c, x, w);\
+	)                    \
+\});\cf2 // end clock\cf0 \
+\});\cf2 // end func\cf0 \
+\
+~go4 = (\{ \cf3 arg\cf0  myTime = 0;\
+\cf3 SystemClock\cf0 .schedAbs( (\cf3 thisThread\cf0 .seconds + myTime),\
+    \{\
+    \cf4 "synth4"\cf0 .postln; \
+    (\
+       d = [4, 8, 16, 32, 64].choose;\
+		~mysynth4task.stop; ~mysynth4.value(d);\
+	)                    \
+\});\cf2 // end clock\cf0 \
+\});\cf2 // end func\cf0 \
+\
+~go5 = (\{ \cf3 arg\cf0  myTime = 0;\
+\cf3 SystemClock\cf0 .schedAbs( (\cf3 thisThread\cf0 .seconds + myTime),\
+    \{\
+    \cf4 "synth5"\cf0 .postln; \
+    (\
+       g = [8, 16, 32, 64].choose;\
+		~mysynth5task.stop; ~mysynth5.value(g, x, w);\
+	)                    \
+\});\cf2 // end clock\cf0 \
+\});\cf2 // end func\cf0 \
+\
+~go6 = (\{ \cf3 arg\cf0  myTime = 0;\
+\cf3 SystemClock\cf0 .schedAbs( (\cf3 thisThread\cf0 .seconds + myTime),\
+    \{\
+    \cf4 "synth6"\cf0 .postln; \
+    (\
+       e = [16, 32, 64].choose;\
+		~mysynth6task.stop; ~mysynth6.value(e);\
+	)                    \
+\});\cf2 // end clock\cf0 \
+\});\cf2 // end func\cf0 \
+\
+~go7 = (\{ \cf3 arg\cf0  myTime = 0;\
+\cf3 SystemClock\cf0 .schedAbs( (\cf3 thisThread\cf0 .seconds + myTime),\
+    \{\
+    \cf4 "synth7"\cf0 .postln; \
+    (\
+       f = [16, 32, 64].choose;\
+		~mysynth7task.stop; ~mysynth7.value(f);\
+	)                    \
+\}); \cf2 // end clock\cf0 \
+\}); \cf2 // end func\cf0 \
+\
+~go8 = (\{ \cf3 arg\cf0  myTime = 0;\
+\cf3 SystemClock\cf0 .schedAbs( (\cf3 thisThread\cf0 .seconds + myTime),\
+    \{\
+    \cf4 "synth8"\cf0 .postln; \
+    (\
+		n = 40.rand;\
+		~mysynth8task.stop; ~mysynth8.value(n, x, w);\
+	)                    \
+\}); \cf2 // end clock\cf0 \
+\}); \cf2 // end func\cf0 \
+\
+~stop = (\{ \cf3 arg\cf0  myTime = 0;\
+\cf3 SystemClock\cf0 .schedAbs( (\cf3 thisThread\cf0 .seconds + myTime),\
+    \{\
+    \cf4 "FINISHED!"\cf0 .postln; \
+    (\
+    ~masterTask.stop; ~modechangeTask.stop;\
+    ~mysynth1task.stop; ~mysynth2task.stop; \
+    ~mysynth3task.stop; ~mysynth4task.stop; \
+    ~mysynth5task.stop; ~mysynth6task.stop; \
+    ~mysynth7task.stop; ~mysynth8task.stop;\
+    ~stoptask.stop;          \
+	)                    \
+\}); \cf2 // end clock\cf0 \
+\}); \cf2 // end func\cf0 \
+\}); \cf2 // end main func\cf0 \
+\
+~master = (\{ \cf3 arg\cf0  val6 = 0; \
+             \cf3 var\cf0  t, myModes;\
+~masterTask = \cf3 Task\cf0 (\{\
+                ~sCount = 0; \
+	                    loop(\{\
+\
+[~go1, ~go2, ~go3, ~go1, ~go2, ~go3, ~go4, ~go5, ~go5, ~go6, ~go7, ~go8, ~go8].choose.value(0);\
+	\
+	~sCount = ~sCount + 1;	\
+	~sCount;\
+	[0.5, 1, 2, 4, 8, 16, 8, 16, 32, 48].choose.wait;	                 \
+	\}); \cf2 // end loop\cf0 \
+	\}).play; \cf2 // end task\cf0 \
+ \
+~modechangeTask = \cf3 Task\cf0 (\{ \
+                ~sCount = 0; \
+	                    loop(\{\
+\
+myModes = [84, 86, 88, 89, 91, 93, 95, 96];\
+t = myModes.choose;\
+ \
+if ( t == 84, \{\cf4 "Ionian Mode"\cf0 .postln;     \});\
+if ( t == 86, \{\cf4 "Dorian Mode"\cf0 .postln;     \});\
+if ( t == 88, \{\cf4 "Phrygian Mode"\cf0 .postln;   \});\
+if ( t == 89, \{\cf4 "Lydian Mode"\cf0 .postln;     \});\
+if ( t == 91, \{\cf4 "Mixolydian Mode"\cf0 .postln; \});\
+if ( t == 93, \{\cf4 "Aeolian Mode"\cf0 .postln;    \});\
+if ( t == 95, \{\cf4 "Locrian Mode"\cf0 .postln;    \});\
+if ( t == 96, \{\cf4 "Ionian Mode"\cf0 .postln;     \});\
+\
+~myFuncy.value(t); \
+~myFunc.value(y, z); \
+\
+	~sCount = ~sCount + 1;	\
+	[32, 64, 128, 256].choose.wait;	                 \
+	\}); \cf2 // end loop\cf0 \
+	\}).play; \cf2 // end task\cf0 \
+\
+~stoptask = \cf3 Task\cf0 (\{ \
+                ~sCount = 0; \
+\
+\pard\pardeftab560\ql\qnatural
+\cf4 "Here We Go!"\cf0 .postln;\
+~stop.value(300.rand.postln);\
+\
+	~sCount = ~sCount + 1;	\
+	500.wait;	                 \
+	\}).play; \cf2 // end task\cf0 \
+\}); \cf2 // end func\cf0 \
+)\
+}
